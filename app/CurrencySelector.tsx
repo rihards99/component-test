@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const AVAILABLE_CURRENCIES = ["EUR", "PLN", "GEL", "DKK", "CZK", "GBP", "SEK", "USD", "RUB"];
+export const AVAILABLE_CURRENCIES = ["EUR", "PLN", "GEL", "DKK", "CZK", "GBP", "SEK", "USD", "RUB"];
 
 export default function CurrencySelector() {
   const [currencies, setCurrencies] = useState<string[]>([]);
@@ -17,17 +17,23 @@ export default function CurrencySelector() {
 
   return (
     <div className="currencySelectorWrapper">
-      <div className="selectedLanguages">
+      <div className="selectedLanguages" data-testid="selectedLanguages">
         {currencies.map((currency) => (
           <div key={currency} className="selectedLanguage">
             <label>{currency}</label>
-            <div className="removeCurrencyButton" onClick={() => onRemoveCurrency(currency)}>+</div>
+            <div
+              className="removeCurrencyButton"
+              data-testid="removeCurrencyButton"
+              onClick={() => onRemoveCurrency(currency)}
+            >
+              +
+            </div>
           </div>
         ))}
       </div>
 
 
-      <div className="availableLanguages">
+      <div className="availableLanguages" data-testid="availableLanguages">
         {AVAILABLE_CURRENCIES.map((currency) => (
           <div
             key={currency}
